@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checkout</title>
+    <meta id="meta" name="viewport"
+		content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+  body {
+  font-family: Arial;
+  margin: 0;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 20px;
+  text-align: left;
+  background: #1abc9c;
+  color: white;
+  font-size: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Welcome to Todo List...</h1>
+</div>
+<br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg">
+                <div class="text-center" style="width:22rem;">
+                    <img src="https://onplanners.com/sites/default/files/styles/template_fancy/public/template-images/printable-daily-do-list-template_0.png" class="card-img">
+                </div>
+            </div>
+            <div class="col-lg">
+                <br><br><br><br><br>
+                <a href="{% url 'login' %}" class="btn btn-outline-success" role="button">Let's get started</a>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

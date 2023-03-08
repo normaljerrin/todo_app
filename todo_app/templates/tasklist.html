@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Task-Lists</title>
+</head>
+<body>
+<div class="container">
+    <h1 align="center">My to do lists</h1><br>
+    <table>
+        <br>
+        <tr>
+            <th>Item</th>
+        </tr>
+        {% for tasks in tasks %}<!-- idhu oru for loop aanu, 2 nd tasks is app nte url le name aan-->
+        <tr>
+            <td>{{tasks.title}}</td><!-- database edit cheyyanulla connection-->
+<!--            <td>{{tasks.description}}</td>-->
+            <td>{{tasks.completed}}</td>
+            <td>{{tasks.created}}</td>
+            <td><a href="{% url 'task-create' %}">Add task</a></td><!--task-create nte url kodukuga-->
+            <td><a href="{% url 'task-update' tasks.id %}">Edit</a></td>
+            <td><a href="{% url 'task-delete' tasks.id %}">Delete</a></td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+</body>
+</html>

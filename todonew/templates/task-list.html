@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/taskliststyle.css' %}">
+    <title>Task-Lists</title>
+</head>
+<body>
+<br><br>
+<button type="submit" class="btn"><a href="{% url 'home' %}" class="btn btn-outline-success" role="button">Logout</a></button>
+    <h1 align="center">My To Do List</h1><br>
+    <table id="customers">
+        <br>
+        <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Completed</th>
+            <th>Date</th>
+            <th>Add</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for tasks in tasks %}
+        <tr>
+            <td>{{tasks.title}}</td>
+            <td>{{tasks.description}}</td>
+            <td>{{tasks.completed}}</td>
+            <td>{{tasks.created}}</td>
+            <td><button type="submit" class="btn"><a href="{% url 'task-create' %}">Add </a></button></td>
+            <td><button type="submit" class="btn"><a href="{% url 'task-update' tasks.id %}">Edit</a></button></td>
+            <td><button type="submit" class="btn"><a href="{% url 'task-delete' tasks.id %}">Delete</a></button></td>
+
+        </tr>
+
+        {% endfor %}
+    </table>
+</link>
+</div>
+</body>
+</html>
