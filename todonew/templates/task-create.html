@@ -7,11 +7,9 @@
     <title>Task_create</title>
 </head>
 <body>
-
 <div class="container">
 <h1>Task create</h1>
      <button type="submit" class="btn"><a href="{% url 'tasks' %}">Go back</a></button>
-
 <form method="post" action="">
     {% csrf_token%}
     {{ form.as_p }}
