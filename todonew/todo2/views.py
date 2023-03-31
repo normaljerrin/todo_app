@@ -1,10 +1,12 @@
+from django.contrib import messages
 from django.core.mail import send_mail
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from .forms import RegisterForm, LoginForm
-from .models import Tasks, Register, Login
+from .models import Tasks
 
 
 # Create your views here.
@@ -48,29 +50,40 @@ def home_fun(request):
     return render(request,'home.html')
 
 def register_fun(request):
-    regggister = Register.objects.all()
-    form = RegisterForm()
 
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-        return redirect('/login')
+        username = request.POST['username']
+        email = request.POST['email']
+        pass1 = request.POST['pass1']
+        pass2 = request.POST['pass2']
 
-    context={'register':regggister,'form':form}
-    return render(request, "register.html",context)
+        myuser = User.objects.create_user(username, email, pass1)
+
+        myuser.save()
+
+        return redirect('login')
+
+    return render(request, 'register.html')
 
 
 def login_fun(request):
-    logggin = Login.objects.all()
-    form = LoginForm()
-
     if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            form.save()
+        username = request.POST['username']
+        pass1 = request.POST['pass1']
 
-        return redirect('/task-list')
+        user = authenticate(username=username, password=pass1)
 
-    context={'login':logggin,'form':form}
-    return render(request, "login.html",context)
+        if user is not None:
+            login(request, user)
+            fname = user.username
+            return render(request, 'task-list.html', {'fname': fname})
+
+        else:
+            return redirect('login')
+
+    return render(request, 'login.html')
+
+def signout(request):
+    logout(request)
+    messages.success(request, 'Logged out Successfully!')
+    return redirect('login')
