@@ -7,24 +7,21 @@
     <title>login</title>
 </head>
 <body>
-
-<div class="container">
-<h1 align="center">Login</h1>
-<form method="POST">
-    {% csrf_token%}
-    <input type="text" class="username" name="username" id="username" placeholder="Enter username" required/><br />
-        <input type="password" class="pass1" name="pass1" id="pass1" placeholder="Enter password" required/><br />
-
-        <a href="" class="forgot">Forgot Password?</a><br><br>
-
-        <div class="submit">
-          <button class="btn-primary" type="submit">Login</button>
-        </div>
-      </form>
-
-    <p class="todologin">Don't have an account, then click  </p>
-    <button type="submit" class="btn"><a href="{% url 'register' %}" class="btn btn-outline-success" role="button">Register</a></button>
-</form>
-</div>
+    <div class="container">
+        <h1 align="center">Login</h1>
+        <form method="POST">
+            {% csrf_token%}
+            <input type="text" class="username" name="username" id="username" placeholder="Enter username" required/>
+            <br><br>
+            <input type="password" class="pass1" name="pass1" id="pass1" placeholder="Enter password" required/>
+            <br><br>
+            <a href="" class="forgot">Forgot Password?</a><br><br>
+            <div class="submit">
+                <button class="btn-primary" type="submit">Login</button>
+            </div>
+        </form>
+        <p class="todologin">If you don't have an account, then click  </p>
+        <button type="submit" class="btn"><a href="{% url 'register' %}" class="btn btn-outline-success" role="button">Register</a></button>
+    </div>
 </body>
 </html>
