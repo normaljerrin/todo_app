@@ -3,16 +3,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/todostyle.css' %}">
     <title>Task_Detail</title>
 </head>
 <body>
-    <div class="container">
+    <div class="enter">
         <h1 align="center">Details of the task</h1>
         <button type="submit" class="btn"><a href="{% url 'tasks' %}">Go back</a></button>
-        <h2>Task:{{tasks.title}}</h2>
-        <h2>Details:{{tasks.description}}</h2>
-        <h2>Is the task completed? {{tasks.completed}}</h2>
+        <h3>Task:{{tasks.title}}</h3>
+        <h3>Details:{{tasks.description}}</h3>
+        <h3>Is the task completed? <br> {{tasks.completed}}</h3>
     </div>
 </body>
 </html>

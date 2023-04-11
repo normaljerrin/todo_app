@@ -1,27 +1,35 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/adcdf23364.js" crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/registerstyle.css' %}">
+    <title>signin</title>
 </head>
 <body>
-    <div class="container">
-        <h1 align="center">Login</h1>
-        <form method="POST">
-            {% csrf_token%}
-            <input type="text" class="username" name="username" id="username" placeholder="Enter username" required/>
-            <br><br>
-            <input type="password" class="pass1" name="pass1" id="pass1" placeholder="Enter password" required/>
-            <br><br>
-            <a href="" class="forgot">Forgot Password?</a><br><br>
-            <div class="submit">
-                <button class="btn-primary" type="submit">Login</button>
-            </div>
-        </form>
-        <p class="todologin">If you don't have an account, then click  </p>
-        <button type="submit" class="btn"><a href="{% url 'register' %}" class="btn btn-outline-success" role="button">Register</a></button>
-    </div>
+
+    <form action="/login" method='POST'>
+        <h1>Login</h1>
+        {% csrf_token %}
+        <div class="enter">
+            <input type="text" id='username' name='username' placeholder='Create a username'Required>
+
+            <input type="password" id='pass1' name='pass1' placeholder='Enter Your Password'Required>
+        </div>
+
+        <div class="forgot"><a href="#">Forgot password?</a></div>
+        <input type="submit" class="save" value='Login'>
+        <p class='sign'>Don't have an account?<a href="{% url 'register'  %}">Signup</a></p>
+        <div class="or">
+            <hr class='hr1'>
+            Or
+            <hr class='hr1'>
+        </div><br>
+        <button type="submit" class="face" ><i class="fa-brands fa-facebook"></i>Login with Facebook</button><br><br>
+        <button type="submit" class="google" ><i class="fa-brands fa-google"></i> Login with Google</button>
+    </form>
 </body>
 </html>

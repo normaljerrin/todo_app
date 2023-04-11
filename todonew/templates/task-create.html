@@ -3,12 +3,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/registerstyle.css' %}">
     <title>Task_create</title>
 </head>
 <body>
-<div class="container">
-<h1>Task create</h1>
+<div class="enter">
+<center><h1>Task create</h1></center>
      <button type="submit" class="btn"><a href="{% url 'tasks' %}">Go back</a></button>
 <form method="post" action="">
     {% csrf_token%}
